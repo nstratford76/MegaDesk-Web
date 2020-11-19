@@ -1,0 +1,60 @@
+﻿@page
+@model MegaDesk_Web.Pages.DeskQuotes.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DeskQuote</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DeskQuote.DeskQuoteID" />
+            <div class="form-group">
+                <label asp-for="DeskQuote.Name" class="control-label"></label>
+                <input asp-for="DeskQuote.Name" class="form-control" />
+                <span asp-validation-for="DeskQuote.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Shipping" class="control-label"></label>
+                <input asp-for="DeskQuote.Shipping" class="form-control" />
+                <span asp-validation-for="DeskQuote.Shipping" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.NumDesks" class="control-label"></label>
+                <input asp-for="DeskQuote.NumDesks" class="form-control" />
+                <span asp-validation-for="DeskQuote.NumDesks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.ShippingCost" class="control-label"></label>
+                <input asp-for="DeskQuote.ShippingCost" class="form-control" />
+                <span asp-validation-for="DeskQuote.ShippingCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.NumDeskCost" class="control-label"></label>
+                <input asp-for="DeskQuote.NumDeskCost" class="form-control" />
+                <span asp-validation-for="DeskQuote.NumDeskCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.totalCost" class="control-label"></label>
+                <input asp-for="DeskQuote.totalCost" class="form-control" />
+                <span asp-validation-for="DeskQuote.totalCost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
