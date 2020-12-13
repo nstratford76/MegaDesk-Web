@@ -19,33 +19,31 @@
                 <span asp-validation-for="DeskQuote.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DeskQuote.D" class="control-label"></label>
-
+                <label asp-for="DeskQuote.Desk.Width" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.Width" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.Width" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Desk.Depth" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.Depth" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.Depth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeskQuote.Desk.NumberofDrawers" class="control-label"></label>
+                <input asp-for="DeskQuote.Desk.NumberofDrawers" class="form-control" />
+                <span asp-validation-for="DeskQuote.Desk.NumberofDrawers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.Shipping" class="control-label"></label>
-                <input asp-for="DeskQuote.Shipping" class="form-control" />
+                <select asp-for="DeskQuote.Shipping" asp-items="@ViewBag.Shipping" control-label">
+                    <option value="">Rush Order Option</option>
+                </select>
                 <span asp-validation-for="DeskQuote.Shipping" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DeskQuote.NumDesks" class="control-label"></label>
                 <input asp-for="DeskQuote.NumDesks" class="form-control" />
                 <span asp-validation-for="DeskQuote.NumDesks" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.ShippingCost" class="control-label"></label>
-                <input asp-for="DeskQuote.ShippingCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.ShippingCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.NumDeskCost" class="control-label"></label>
-                <input asp-for="DeskQuote.NumDeskCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.NumDeskCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DeskQuote.totalCost" class="control-label"></label>
-                <input asp-for="DeskQuote.totalCost" class="form-control" />
-                <span asp-validation-for="DeskQuote.totalCost" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

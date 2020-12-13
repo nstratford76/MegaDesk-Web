@@ -10,18 +10,22 @@ namespace MegaDesk_Web.Models
     {
         public int DeskID { get; set; }
         private int material;
-        public const short MIN_WIDTH = 24;
-        public const short MAX_WIDTH = 96;
-        public const short MIN_DEPTH = 12;
-        public const short MAX_DEPTH = 48;
-        public const short MAX_DESK_DRAWERS = 7;
-        public const short LAMINATE_COST = 100;
-        public const short OAK_COST = 200;
-        public const short ROSEWOOD_COST = 300;
-        public const short PINE_COST = 50;
-        public const short VENEER_COST = 125;
+        //public const short MIN_WIDTH = 24;
+        //public const short MAX_WIDTH = 96;
+        //public const short MIN_DEPTH = 12;
+        //public const short MAX_DEPTH = 48;
+        //public const short MAX_DESK_DRAWERS = 7;
+        //public const short LAMINATE_COST = 100;
+        //public const short OAK_COST = 200;
+        //public const short ROSEWOOD_COST = 300;
+        //public const short PINE_COST = 50;
+        //public const short VENEER_COST = 125;
+
+        public int DesktopMaterialID;
         public int Width { get; set; }
         public int Depth { get; set; }
+
+        public DesktopMaterial DesktopMaterial;
 
         private int _area;
         public int Area { get { _area = Width * Depth; return _area; } set { _area = value; } }
@@ -61,10 +65,6 @@ namespace MegaDesk_Web.Models
                 _numberofDrawersCost = value;
             }
         }
-
-        public DesktopMaterial SurfaceMaterial { get; set; }
-
-        private int _materialCost;
 
         //public int MaterialCost
         //{

@@ -21,6 +21,7 @@ namespace MegaDesk_Web.Pages.DeskQuotes
 
         public IActionResult OnGet()
         {
+            ViewData["Shipping"] = new SelectList(_context.Shipping, "ShippingID", "RushOrder");
             return Page();
         }
 

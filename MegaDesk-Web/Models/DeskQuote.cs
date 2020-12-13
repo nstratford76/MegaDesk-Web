@@ -5,77 +5,84 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace MegaDesk_Web.Models
-{
-    public enum DeliveryType
-    {
-        Rush3Days,
-        Rush5Days,
-        Rush7Days,
-        NoRush
-    }
-
+{ 
     public class DeskQuote
     {
         public int DeskQuoteID { get; set; }
+        public int DeskTopMaterialID { get; set; }
+        public DesktopMaterial DesktopMaterial { get; set; }
+
         public const short BASE_DESK_COST = 200;
-        public int DeskID { get; set; }
+        public int Width { get; set; }
+
+        public int Depth { get; set; }
+
+        public int NumDrawers { get; set; }
+
+        public int NumDesks { get; set; }
         public int ShippingID { get; set; }
-        public Desk D { get; set; }
 
         public string Name { get; set; }
-        public string Shipping { get; set; }
-        public int NumDesks { get; set; }
+        public Shipping Shipping { get; set; }
+
+        private int _area;
+        public int Area { get { _area = Width * Depth; return _area; } set { _area = value; } }
+
+        private int _areaCost;
+        public int AreaCost
+        {
+            get
+            {
+                if (Area <= 1000)
+                    return 0;
+                else
+                {
+                    _areaCost = Area - 1000;
+                    return _areaCost;
+                }
+
+            }
+            set
+            {
+                _areaCost = value;
+            }
+        }
+        private int _numberofDrawersCost;
+        public int NumberofDrawersCost
+        {
+            get
+            {
+                _numberofDrawersCost = NumDrawers * 50;
+                return _numberofDrawersCost;
+            }
+            set
+            {
+                _numberofDrawersCost = value;
+            }
+        }
 
         private int _numDeskCost;
 
-
-
-        private float _shippingCost;
-        public float ShippingCost
-        {
-
-            get
-            {
-                Dictionary<string, List<int>> prices = GetRushOrder();
-
-                if (D.Area < 1000)
-                {
-                    _shippingCost = prices[Shipping][0];
-                }
-                else if (D.Area >= 1000 && D.Area <= 2000)
-                {
-                    _shippingCost = prices[Shipping][1];
-                }
-
-                else
-                {
-                    _shippingCost = prices[Shipping][2];
-                }
-
-                return _shippingCost;
-            }
-            set { _shippingCost = value; }
-        }
         public int NumDeskCost
         {
             get { _numDeskCost = NumDesks * BASE_DESK_COST; return _numDeskCost; }
             set { _numDeskCost = value; }
         }
-        private float _totalCost;
-        public float totalCost
-        {
-            get
-            {
-                float totalBeforeDesks = ShippingCost + D.NumberofDrawersCost + //D.MaterialCost
-                    + D.AreaCost;
-                _totalCost = (totalBeforeDesks * NumDesks) + NumDeskCost;
-                return _totalCost;
-            }
-            set
-            {
-                _totalCost = value;
-            }
-        }
+        //private float _totalCost;
+        //public float totalCost
+        //{
+        //    get
+        //    {
+        //        float totalBeforeDesks = //ShippingCost + NumberofDrawersCost + //D.MaterialCost
+        //            + AreaCost;
+        //        _totalCost = (totalBeforeDesks * NumDesks) + NumDeskCost;
+        //        return _totalCost;
+        //    }
+        //    set
+        //    {
+        //        _totalCost = value;
+        //    }
+        //}
 
         //public decimal GetQuotePrice(MegaDesk_WebContext context)
         //{
